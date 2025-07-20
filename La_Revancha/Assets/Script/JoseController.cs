@@ -10,11 +10,17 @@ public class JoseController : MonoBehaviour
     public float fuerzaSalto = 8.0f;
     public bool puedoSaltar;
 
+    public float velocidadInicial;
+    public float velocidadAgachado;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
         puedoSaltar=false;
+        
+        velocidadInicial = velocidadMovimiento;
+        velocidadAgachado = velocidadMovimiento * 0.5f;
 
     }
 
@@ -37,6 +43,17 @@ public class JoseController : MonoBehaviour
             {
                 anim.SetBool("salte", true);
                 rb.AddForce(new Vector3 (0, fuerzaSalto, 0),ForceMode.Impulse);
+            }
+
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                anim.SetBool("agachado", true);
+                velocidadMovimiento = velocidadAgachado;
+            }
+            else
+            {
+                anim.SetBool("agachado", false);
+                velocidadMovimiento = velocidadInicial;
             }
             anim.SetBool("tocaSuelo", true);
         }
