@@ -6,23 +6,52 @@ public class JoseController : MonoBehaviour
     public float velocidadRotacion = 200.0f;
     private Animator anim;
     public float x, y;
+    public Rigidbody rb;
+    public float fuerzaSalto = 8.0f;
+    public bool puedoSaltar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         anim = GetComponent<Animator>();
+        puedoSaltar=false;
+
     }
 
+    void FixedUpdate()
+    {
+        transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
+        transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento);
+    }
     // Update is called once per frame
     void Update()
     {
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
-        transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
-        transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento);
-
         anim.SetFloat("VelX", x);
         anim.SetFloat("VelY", y);
+        if (puedoSaltar)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                anim.SetBool("salte", true);
+                rb.AddForce(new Vector3 (0, fuerzaSalto, 0),ForceMode.Impulse);
+            }
+            anim.SetBool("tocaSuelo", true);
+        }
+        else
+        {
+            EstoyCayendo();
+
+        }
     }
+
+    public void EstoyCayendo()
+    {
+        anim.SetBool("tocaSuelo", false);
+        anim.SetBool("salte", false);
+    }
+    
+    
 }
