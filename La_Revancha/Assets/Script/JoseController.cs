@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class JoseController : MonoBehaviour
@@ -12,6 +13,9 @@ public class JoseController : MonoBehaviour
 
     public float velocidadInicial;
     public float velocidadAgachado;
+    public bool atacando;
+    public bool avanzoSolo;
+    public float impulsoGolpe = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,35 +30,56 @@ public class JoseController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
-        transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento);
+        if (!atacando)
+        {
+            transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
+            transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento);
+        }
+
+        if (avanzoSolo)
+        {
+            rb.velocity = transform.forward * impulsoGolpe;
+            //rb.SetVelocity(transform.forward * impulsoGolpe);
+        }
     }
     // Update is called once per frame
     void Update()
     {
+
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
+        if (Input.GetKeyDown(KeyCode.Return) && puedoSaltar && !atacando)
+        {
+            anim.SetTrigger("golpear");
+            atacando = true;
+        }
+
         anim.SetFloat("VelX", x);
         anim.SetFloat("VelY", y);
+
         if (puedoSaltar)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!atacando)
             {
-                anim.SetBool("salte", true);
-                rb.AddForce(new Vector3 (0, fuerzaSalto, 0),ForceMode.Impulse);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    anim.SetBool("salte", true);
+                    rb.AddForce(new Vector3(0, fuerzaSalto, 0), ForceMode.Impulse);
+                }
+
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    anim.SetBool("agachado", true);
+                    velocidadMovimiento = velocidadAgachado;
+                }
+                else
+                {
+                    anim.SetBool("agachado", false);
+                    velocidadMovimiento = velocidadInicial;
+                }
             }
 
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                anim.SetBool("agachado", true);
-                velocidadMovimiento = velocidadAgachado;
-            }
-            else
-            {
-                anim.SetBool("agachado", false);
-                velocidadMovimiento = velocidadInicial;
-            }
             anim.SetBool("tocaSuelo", true);
         }
         else
@@ -70,5 +95,20 @@ public class JoseController : MonoBehaviour
         anim.SetBool("salte", false);
     }
     
+    public void DejoDeGolpear()
+    {
+        atacando=false;
+        avanzoSolo = false;
+    }
+
+    public void AvanzoSolo()
+    {
+        avanzoSolo=true;
+    }
+
+    public void DejoAvanzar()
+    {
+        avanzoSolo = false;
+    }
     
 }
