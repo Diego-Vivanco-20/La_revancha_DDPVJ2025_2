@@ -14,6 +14,7 @@ public class JoseController : MonoBehaviour
     public float velocidadInicial;
     public float velocidadAgachado;
     public bool atacando;
+    public bool pateando;
     public bool avanzoSolo;
     public float impulsoGolpe = 10f;
 
@@ -50,11 +51,18 @@ public class JoseController : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Return) && puedoSaltar && !atacando)
+        if (Input.GetKeyDown(KeyCode.Return) && puedoSaltar && !atacando && !pateando)
         {
             anim.SetTrigger("golpear");
             atacando = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.P) && puedoSaltar && !atacando && !pateando)
+        {
+            anim.SetTrigger("patear");
+            pateando = true;
+        }
+
 
         anim.SetFloat("VelX", x);
         anim.SetFloat("VelY", y);
@@ -102,6 +110,11 @@ public class JoseController : MonoBehaviour
         anim.SetBool("tocaSuelo", true);  // Forzar animación de blend tree
         Debug.Log("tocaSuelo" + puedoSaltar);
         //avanzoSolo = false;
+    }
+
+    public void DejarPatear()
+    {
+       pateando = false;
     }
 
     public void AvanzoSolo()
