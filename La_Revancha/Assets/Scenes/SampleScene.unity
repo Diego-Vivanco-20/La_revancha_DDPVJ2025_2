@@ -460,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4e6998b6f286cb4d924450eb10bb653, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4e6998b6f286cb4d924450eb10bb653, type: 3}
       propertyPath: m_LocalPosition.z
@@ -730,9 +730,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.61836773
-  m_Height: 1.3483385
+  m_Height: 1.2367355
   m_Direction: 1
-  m_Center: {x: 0.01594311, y: 0.7009936, z: 0.043973923}
+  m_Center: {x: 0.01594311, y: 0.7567951, z: 0.043973923}
 --- !u!1 &2141407057 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a4e6998b6f286cb4d924450eb10bb653, type: 3}

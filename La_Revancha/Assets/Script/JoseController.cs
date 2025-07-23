@@ -39,6 +39,7 @@ public class JoseController : MonoBehaviour
         if (avanzoSolo)
         {
             rb.velocity = transform.forward * impulsoGolpe;
+
             //rb.SetVelocity(transform.forward * impulsoGolpe);
         }
     }
@@ -98,7 +99,9 @@ public class JoseController : MonoBehaviour
     public void DejoDeGolpear()
     {
         atacando=false;
-        avanzoSolo = false;
+        anim.SetBool("tocaSuelo", true);  // Forzar animación de blend tree
+        Debug.Log("tocaSuelo" + puedoSaltar);
+        //avanzoSolo = false;
     }
 
     public void AvanzoSolo()

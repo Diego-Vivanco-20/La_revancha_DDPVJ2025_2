@@ -20,10 +20,12 @@ public class FeetJump : MonoBehaviour
     {
 
         joseController.puedoSaltar = true;
+        //Debug.Log("Toco el suelo");
     }
 
     private void OnTriggerExit(Collider other)
     {
         joseController.puedoSaltar=false;
+        Debug.Log("No estoy tocando el suelo");
     }
 }
