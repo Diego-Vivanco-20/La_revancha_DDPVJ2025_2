@@ -34,6 +34,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         menu_Ajustes.SetActive(false);
+        menu_IniciarJuego.SetActive(false);
         //playButton.onClick.AddListener(PlayGame);
         playButton.onClick.AddListener(showStartGame);
         startButton.onClick.AddListener(PlayGame);
