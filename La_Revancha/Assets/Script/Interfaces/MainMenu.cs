@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public GameObject menu_Inicial;
+
+    public GameObject menu_Ajustes;
+    public GameObject soundMenu;
+    public GameObject imageMenu;
     //public GameObject menu_Ajustes;
     
     //public GameObject menu_Creditos;
@@ -18,6 +22,13 @@ public class MainMenu : MonoBehaviour
     //public GameObject creditos3;
 
     public Button playButton;
+    public Button optionsButton;
+    public Button soundButton;
+    public Button imageButton;
+
+
+
+
 
     /*
     public Button optionsButton;
@@ -34,6 +45,8 @@ public class MainMenu : MonoBehaviour
     {
         //menu_Ajustes.SetActive(false);
         playButton.onClick.AddListener(PlayGame);
+
+        optionsButton.onClick.AddListener(showOptions);
         /*
         creditsButton.onClick.AddListener(showCredits);
         optionsButton.onClick.AddListener(showOptions);
@@ -64,7 +77,7 @@ public class MainMenu : MonoBehaviour
     public void showOptions()
     {
         CleanPanels();
-        //menu_Ajustes.SetActive(true);
+        menu_Ajustes.SetActive(true);
         //SoundMusicManager.InstanceMusic.PlayMenuAjustes();
     }
 
