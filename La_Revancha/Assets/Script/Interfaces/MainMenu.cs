@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject menu_Inicial;
 
+    
     public GameObject menu_Ajustes;
     public GameObject soundMenu;
     public GameObject imageMenu;
@@ -28,6 +29,7 @@ public class MainMenu : MonoBehaviour
     public Button imageButton;
     public Button beginButton;
     public Button resumeButton;
+    public Button exitGame;
 
 
 
@@ -47,10 +49,15 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         //menu_Ajustes.SetActive(false);
-        playButton.onClick.AddListener(PlayGame);
+        playButton.onClick.AddListener(ShowBegin);
+        beginButton.onClick.AddListener(PlayGame);
 
         optionsButton.onClick.AddListener(showOptions);
-        soundButton.onClick.AddListener(showOptions);
+        soundButton.onClick.AddListener(showSoundMenu);
+        imageButton.onClick.AddListener(showImageMenu);
+
+        exitGame.onClick.AddListener(Salir);
+
         /*
         creditsButton.onClick.AddListener(showCredits);
         optionsButton.onClick.AddListener(showOptions);
@@ -85,6 +92,13 @@ public class MainMenu : MonoBehaviour
         //SoundMusicManager.InstanceMusic.PlayMenuAjustes();
     }
 
+
+    public void ShowBegin()
+    {
+        CleanPanels();
+        playMenu.SetActive(true);
+    }
+
     public void showMain()
     {
         CleanPanels();
@@ -93,11 +107,26 @@ public class MainMenu : MonoBehaviour
 
 
     }
+
+
+    public void showSoundMenu()
+    {
+        CleanPanels();
+        soundMenu.SetActive(true);
+    }
+
+    public void showImageMenu()
+    {
+        CleanPanels();
+        imageMenu.SetActive(true);
+    }
     private void CleanPanels()
     {
         menu_Inicial.SetActive(false);
         
         menu_Ajustes.SetActive(false);
+
+        
 
 
         /*
