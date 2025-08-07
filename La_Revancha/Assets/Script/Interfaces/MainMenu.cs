@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject menu_Ajustes;
     public GameObject soundMenu;
     public GameObject imageMenu;
+    public GameObject playMenu;
     //public GameObject menu_Ajustes;
     
     //public GameObject menu_Creditos;
@@ -25,6 +26,8 @@ public class MainMenu : MonoBehaviour
     public Button optionsButton;
     public Button soundButton;
     public Button imageButton;
+    public Button beginButton;
+    public Button resumeButton;
 
 
 
@@ -47,6 +50,7 @@ public class MainMenu : MonoBehaviour
         playButton.onClick.AddListener(PlayGame);
 
         optionsButton.onClick.AddListener(showOptions);
+        soundButton.onClick.AddListener(showOptions);
         /*
         creditsButton.onClick.AddListener(showCredits);
         optionsButton.onClick.AddListener(showOptions);
@@ -92,8 +96,11 @@ public class MainMenu : MonoBehaviour
     private void CleanPanels()
     {
         menu_Inicial.SetActive(false);
-        /*
+        
         menu_Ajustes.SetActive(false);
+
+
+        /*
         menu_Creditos.SetActive(false);
         creditos2.SetActive(false);
         creditos3.SetActive(false);
