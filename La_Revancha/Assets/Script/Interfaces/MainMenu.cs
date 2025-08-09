@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     public GameObject soundMenu;
     public GameObject imageMenu;
     public GameObject playMenu;
+
     //public GameObject menu_Ajustes;
     
     //public GameObject menu_Creditos;
@@ -30,6 +31,11 @@ public class MainMenu : MonoBehaviour
     public Button beginButton;
     public Button resumeButton;
     public Button exitGame;
+
+    public Button backFromSoundButton;
+    public Button backFromImageButton;
+    public Button backToMainMenuFromSound;
+    public Button backToMainMenuFromImage;
 
 
 
@@ -55,6 +61,11 @@ public class MainMenu : MonoBehaviour
         optionsButton.onClick.AddListener(showOptions);
         soundButton.onClick.AddListener(showSoundMenu);
         imageButton.onClick.AddListener(showImageMenu);
+
+        backFromSoundButton.onClick.AddListener(showOptions);
+        backFromImageButton.onClick.AddListener(showOptions);
+        backToMainMenuFromSound.onClick.AddListener(showMain);
+        backToMainMenuFromImage.onClick.AddListener(showMain);
 
         exitGame.onClick.AddListener(Salir);
 
@@ -126,15 +137,20 @@ public class MainMenu : MonoBehaviour
         
         menu_Ajustes.SetActive(false);
 
-        
+        soundMenu.SetActive(false);
+
+        imageMenu.SetActive(false);
+
+        playMenu.SetActive(false);
 
 
-        /*
-        menu_Creditos.SetActive(false);
-        creditos2.SetActive(false);
-        creditos3.SetActive(false);
-        */
-    }
+
+    /*
+    menu_Creditos.SetActive(false);
+    creditos2.SetActive(false);
+    creditos3.SetActive(false);
+    */
+}
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
