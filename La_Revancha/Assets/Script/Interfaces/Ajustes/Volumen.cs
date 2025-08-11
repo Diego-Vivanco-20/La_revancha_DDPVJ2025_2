@@ -10,11 +10,13 @@ public class Volumen : MonoBehaviour
     public Slider musicSlider;
     public Slider ambientalSlider;
     public Slider SFxSlider;
+    public Slider masterSlider;
     public AudioMixer mainAudioMixer;
 
     private float currentMusicVolume;
     private float currentAmbientalVolume;
     private float currentSfxVolume;
+    private float currentMasterVolume;
 
 
 
@@ -27,6 +29,8 @@ public class Volumen : MonoBehaviour
             ambientalSlider.value = currentAmbientalVolume;
         if (mainAudioMixer.GetFloat("SFxVolume", out currentSfxVolume))
             SFxSlider.value = currentSfxVolume;
+        if(mainAudioMixer.GetFloat("masterVolume", out currentMasterVolume))
+            masterSlider.value = currentMasterVolume;
     }
 
     // Update is called once per frame
@@ -48,5 +52,10 @@ public class Volumen : MonoBehaviour
     public void OnSFxVolumeChange(float volume)
     {
         mainAudioMixer.SetFloat("SFxVolume", volume);
+    }
+
+    public void OnMaterVolumeChange(float volume)
+    {
+        mainAudioMixer.SetFloat("masterVolume", volume);
     }
 }
