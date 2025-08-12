@@ -55,12 +55,14 @@ public class JoseController : MonoBehaviour
         {
             anim.SetTrigger("golpear");
             atacando = true;
+            SoundSFxProta.InstanceSFxProta.golpeaProta();
         }
 
         if (Input.GetKeyDown(KeyCode.P) && puedoSaltar && !atacando && !pateando)
         {
             anim.SetTrigger("patear");
             pateando = true;
+            SoundSFxProta.InstanceSFxProta.pateaProta();
         }
 
 
@@ -75,6 +77,7 @@ public class JoseController : MonoBehaviour
                 {
                     anim.SetBool("salte", true);
                     rb.AddForce(new Vector3(0, fuerzaSalto, 0), ForceMode.Impulse);
+                    SoundSFxProta.InstanceSFxProta.saltoProta();
                 }
 
                 if (Input.GetKey(KeyCode.LeftControl))
