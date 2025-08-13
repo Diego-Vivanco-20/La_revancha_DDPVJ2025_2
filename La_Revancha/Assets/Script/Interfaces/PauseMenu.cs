@@ -54,7 +54,7 @@ public class PauseMenu : MonoBehaviour
         regresarMenuPausaSonido.onClick.AddListener(MuestraMenuPausa);
         menuInicio.onClick.AddListener(IrMenuInicio);
         //botonAjustes.onClick.AddListener(Ajustes);
-        regresarMenuPausa.onClick.AddListener(Reanudar);
+        //regresarMenuPausa.onClick.AddListener(Reanudar);
         continuar.onClick.AddListener(Reanudar);
         salir.onClick.AddListener(Salir);
         //reinicio.onClick.AddListener(Reinicio);
