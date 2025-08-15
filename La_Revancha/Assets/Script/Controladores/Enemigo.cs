@@ -2,16 +2,17 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class Enemigo : MonoBehaviour
 {
     public Vector2 patrolArea;
     public float patrolRefreshTime;
     private NavMeshAgent agent;
     private GameObject player;
     private Animator animator;
-    private Vector3 destination;
-
     private EnemyState currentState;
+    private Vector3 destination;
+    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,16 +21,17 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindWithTag("prota");
         animator = GetComponent<Animator>();
         ChangeState(EnemyState.PATROL);
+        //currentState = GetComponent<EnemyState>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //agent.SetDestination(player.transform.position);
         agent.SetDestination(destination);
-        animator.SetFloat("VelX", agent.velocity.sqrMagnitude);
+        animator.SetFloat("speed", agent.velocity.sqrMagnitude);
+        ChangeState(EnemyState.PATROL);
     }
-
     public void ChangeState(EnemyState newState)
     {
         switch (newState)
@@ -44,7 +46,6 @@ public class EnemyController : MonoBehaviour
                 break;
         }
         currentState = newState;
-
     }
 
     IEnumerator WaitToNewPatrolPoint()
