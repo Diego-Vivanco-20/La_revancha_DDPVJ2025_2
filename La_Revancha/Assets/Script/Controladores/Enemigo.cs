@@ -11,6 +11,8 @@ public class Enemigo : MonoBehaviour
     private Animator animator;
     private EnemyState currentState;
     private Vector3 destination;
+    private Ray enemyRay;
+    private RaycastHit hit;
     
 
 
@@ -22,15 +24,31 @@ public class Enemigo : MonoBehaviour
         animator = GetComponent<Animator>();
         ChangeState(EnemyState.PATROL);
         //currentState = GetComponent<EnemyState>();
+       
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(transform.position, transform.forward * 100f, Color.red);
         agent.SetDestination(destination);
         animator.SetFloat("speed", agent.velocity.sqrMagnitude);
-        ChangeState(EnemyState.PATROL);
+
+        enemyRay = new Ray(transform.position + Vector3.up, transform.forward);
+
+        
+        if (Physics.SphereCast(enemyRay, 2f, out hit, 20f))
+        {
+            if (hit.transform.CompareTag("prota"))
+            {
+                Debug.Log("Detecta al jugador");
+                ChangeState(EnemyState.CHASE);
+            }
+        }
+
+        
+        //ChangeState(EnemyState.PATROL);
     }
     public void ChangeState(EnemyState newState)
     {
@@ -38,6 +56,7 @@ public class Enemigo : MonoBehaviour
         {
             case EnemyState.PATROL:
                 StartCoroutine("WaitToNewPatrolPoint");
+                Debug.Log("El enemigo esta patrullando");
                 break;
             case EnemyState.CHASE:
                 destination = player.transform.position;
