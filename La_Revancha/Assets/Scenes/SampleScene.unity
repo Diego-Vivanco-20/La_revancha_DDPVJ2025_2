@@ -843,8 +843,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577ef29b328d0f24a9c2bc9e058bbaa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolArea: {x: 4000, y: 4000}
-  patrolRefreshTime: 3
+  patrolArea: {x: 50, y: 50}
+  patrolTime: 3
+  chaseDistance: 15
 --- !u!1 &319683301
 GameObject:
   m_ObjectHideFlags: 0
