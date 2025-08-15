@@ -17,8 +17,12 @@ public class Enemigo : MonoBehaviour
     private EnemyState enemyState;
     private Vector3 patrolDestination;
 
-   // public GameObject barraVida;
-    //public int vida = 100;
+    //public GameObject sliderLife;
+    public int typeEnemy;
+    public Image sliderLife;
+    public int life = 100;
+    public int attack = 10;
+    private float currentLife;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,10 +30,12 @@ public class Enemigo : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("prota").transform;
         enemyState = EnemyState.PATROL;
         InvokeRepeating("CalculatePatrolDestination", 0f, patrolTime);
+        currentLife = life;
     }
 
     void Update()
     {
+       //StatusLife();
         switch (enemyState)
         {
             case EnemyState.PATROL:
@@ -59,10 +65,10 @@ public class Enemigo : MonoBehaviour
                                                             Random.Range(-patrolArea.y, patrolArea.y));
     }
 
-    /*
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Item"))
+        if (other.gameObject.CompareTag("prota"))
         {
             Debug.Log("Contacto con barra");
             PerderVidaEnemigo();
@@ -70,14 +76,16 @@ public class Enemigo : MonoBehaviour
     }
     private void PerderVidaEnemigo()
     {
-        vida = vida - 50;
-        barraVida.GetComponent<Slider>().value = vida;
+        //vida = vida - 50;
+        currentLife -= attack;
+        sliderLife.fillAmount = currentLife / life;
+        //sliderLife.GetComponent<Slider>().value = currentLife;
         RevisarVida();
     }
 
     private void RevisarVida()
     {
-        if (vida == 0)
+        if (currentLife == 0)
         {
             animator.SetTrigger("Morir");
             StartCoroutine(TiempoMuerte());
@@ -85,12 +93,13 @@ public class Enemigo : MonoBehaviour
         }
     }
 
+
     private IEnumerator TiempoMuerte()
     {
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
-    */
+    
     private void Patrol()
     {
         if (Vector3.Distance(transform.position, playerTransform.position) <= chaseDistance)
@@ -117,11 +126,11 @@ public class Enemigo : MonoBehaviour
             if (Vector3.Distance(transform.position, playerTransform.position) <= 5f)
             {
                 enemyState = EnemyState.ATTACK;
-                Debug.Log("Distancia a 5");
+                //Debug.Log("Distancia a 5");
             }
             else
             {
-                Debug.Log("Distancia de más de 5");
+                //Debug.Log("Distancia de más de 5");
                 navMeshAgent.SetDestination(playerTransform.position);
                 animator.SetFloat("speed", navMeshAgent.velocity.sqrMagnitude);
             }
@@ -132,12 +141,41 @@ public class Enemigo : MonoBehaviour
     private void Atack()
     {
         navMeshAgent.SetDestination(playerTransform.position);
-        animator.SetTrigger("AtaqueEnemigo");
+        if(typeEnemy == 1)
+        {
+            animator.SetTrigger("AtaqueEnemigo");
+        }
+        if (typeEnemy == 2)
+        {
+            animator.SetTrigger("machetazo");
+        }
+        
         if (Vector3.Distance(transform.position, playerTransform.position) > 5f)
         {
             enemyState = EnemyState.CHASE;
         }
     }
+
+
+    /*
+    private void OnTriggerEnter(Collider coll)
+    {
+        if (coll.CompareTag("prota"))
+        {
+            vidaActual -= ataque;
+
+            if (vidaActual <= 0)
+            {
+                //caidaScript.lifes -= 1;
+                vidaActual = vidaMax;
+                //caidaScript.MoverPuntoInicial();
+            }
+
+        }
+    }
+
+    */
+
 }
 
 public enum EnemyState
