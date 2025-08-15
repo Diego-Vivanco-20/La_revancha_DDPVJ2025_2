@@ -21,7 +21,7 @@ public class Enemigo : MonoBehaviour
     public int typeEnemy;
     public Image sliderLife;
     public int life = 100;
-    public int attack = 10;
+    public int attack = 1;
     private float currentLife;
     void Start()
     {
@@ -68,9 +68,9 @@ public class Enemigo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("prota"))
+        if (other.gameObject.CompareTag("ataqueProta"))
         {
-            Debug.Log("Contacto con barra");
+            Debug.Log("Prota me esta golpeando");
             //SoundSFxMuerto.InstanceSFxMuerto.RecibeAtaque();
             //StartCoroutine(TiempoDano());
             PerderVidaEnemigo();

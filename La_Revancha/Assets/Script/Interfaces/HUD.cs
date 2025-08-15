@@ -14,10 +14,17 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI porcentajeVida;
     public TextMeshProUGUI porcentajePoder;
     public PlayerDataSO playerData;
+    public int vidasProta = 3;
     // Start is called before the first frame update
     void Start()
     {
-
+        /*
+        if(playerData.vidas == 3)
+        {
+            SetNumVidas(playerData.vidas);
+        }*/
+        playerData.vidas = vidasProta;
+        SetNumVidas(playerData.vidas);
     }
 
     // Update is called once per frame
@@ -48,7 +55,8 @@ public class HUD : MonoBehaviour
         //recuerdosText.text = numRecuerdos.ToString();
     }
 
-    public void GetNumVidas(int numVidas)
+
+    public void SetNumVidas(int numVidas)
     {
         //playerData.puntosVidas = numVidas;
         playerData.vidas = numVidas;

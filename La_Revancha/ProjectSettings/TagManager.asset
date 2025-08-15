@@ -12,6 +12,12 @@ TagManager:
   - Charro
   - recuerdos
   - monedas
+  - ataqueProta
+  - ataqueMuerto
+  - recuerdo1
+  - recuerdo2
+  - recuerdo3
+  - PortalN1
   layers:
   - Default
   - TransparentFX
