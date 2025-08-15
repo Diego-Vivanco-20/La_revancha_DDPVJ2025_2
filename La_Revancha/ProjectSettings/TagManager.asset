@@ -8,6 +8,8 @@ TagManager:
   - puntosVida
   - prota
   - Armas
+  - Enemigo
+  - Charro
   layers:
   - Default
   - TransparentFX

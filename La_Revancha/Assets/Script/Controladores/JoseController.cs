@@ -129,5 +129,15 @@ public class JoseController : MonoBehaviour
     {
         avanzoSolo = false;
     }
-    
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemigo"))
+        {
+            Debug.Log("Enemigo me esta golpeando");
+            //PerderVida();
+        }
+    }
+
 }

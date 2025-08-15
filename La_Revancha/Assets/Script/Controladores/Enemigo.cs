@@ -112,16 +112,21 @@ public class Enemigo : MonoBehaviour
         }
         else
         {
+
+
             if (Vector3.Distance(transform.position, playerTransform.position) <= 5f)
             {
                 enemyState = EnemyState.ATTACK;
+                Debug.Log("Distancia a 5");
             }
             else
             {
+                Debug.Log("Distancia de más de 5");
                 navMeshAgent.SetDestination(playerTransform.position);
                 animator.SetFloat("speed", navMeshAgent.velocity.sqrMagnitude);
             }
         }
+        
     }
 
     private void Atack()
