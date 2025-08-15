@@ -71,6 +71,8 @@ public class Enemigo : MonoBehaviour
         if (other.gameObject.CompareTag("prota"))
         {
             Debug.Log("Contacto con barra");
+            //SoundSFxMuerto.InstanceSFxMuerto.RecibeAtaque();
+            //StartCoroutine(TiempoDano());
             PerderVidaEnemigo();
         }
     }
@@ -87,7 +89,9 @@ public class Enemigo : MonoBehaviour
     {
         if (currentLife == 0)
         {
+            //SoundSFxMuerto.InstanceSFxMuerto.
             animator.SetTrigger("Morir");
+            SoundSFxMuerto.InstanceSFxMuerto.Derrota();
             StartCoroutine(TiempoMuerte());
 
         }
@@ -99,7 +103,18 @@ public class Enemigo : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
-    
+
+    private IEnumerator TiempoDano()
+    {
+        yield return new WaitForSeconds(1f);
+        SoundSFxMuerto.InstanceSFxMuerto.RecibeAtaque();
+    }
+    private IEnumerator TiempoAtaque()
+    {
+        yield return new WaitForSeconds(1f);
+        SoundSFxMuerto.InstanceSFxMuerto.AtaqueMuerto();
+    }
+
     private void Patrol()
     {
         if (Vector3.Distance(transform.position, playerTransform.position) <= chaseDistance)
@@ -144,6 +159,8 @@ public class Enemigo : MonoBehaviour
         if(typeEnemy == 1)
         {
             animator.SetTrigger("AtaqueEnemigo");
+            StartCoroutine(TiempoAtaque());
+            //SoundSFxMuerto.InstanceSFxMuerto.AtaqueMuerto();
         }
         if (typeEnemy == 2)
         {
