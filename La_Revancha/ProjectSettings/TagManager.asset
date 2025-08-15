@@ -10,6 +10,8 @@ TagManager:
   - Armas
   - Enemigo
   - Charro
+  - recuerdos
+  - monedas
   layers:
   - Default
   - TransparentFX

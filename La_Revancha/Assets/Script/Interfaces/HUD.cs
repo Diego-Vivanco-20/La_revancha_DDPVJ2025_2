@@ -13,6 +13,7 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI numMonedasText;
     public TextMeshProUGUI porcentajeVida;
     public TextMeshProUGUI porcentajePoder;
+    public PlayerDataSO playerData;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,22 +28,36 @@ public class HUD : MonoBehaviour
 
     public void SetNumMonedas(int monedas)
     {
-        numMonedasText.text = monedas.ToString();
+        playerData.monedas = monedas;
+        numMonedasText.text = playerData.monedas.ToString();
+        //numMonedasText.text = monedas.ToString();
         //armas.text = datos.GetNumArmas().ToString();
     }
 
-    public void SetNumPuntosVida(float puntosVida)
+    public void SetNumPuntosVida(int puntosVida)
     {
-        puntosVidaText.text = puntosVida.ToString();
+        playerData.puntosSanacion = puntosVida;
+        puntosVidaText.text = playerData.puntosSanacion.ToString();
+        //puntosVidaText.text = puntosVida.ToString();
     }
 
     public void SetNumRecuerdos(int numRecuerdos)
     {
-        recuerdosText.text = numRecuerdos.ToString();
+        playerData.recuerdos = numRecuerdos;
+        recuerdosText.text = playerData.recuerdos.ToString();
+        //recuerdosText.text = numRecuerdos.ToString();
     }
 
     public void GetNumVidas(int numVidas)
     {
-        vidasText.text = numVidas.ToString();
+        //playerData.puntosVidas = numVidas;
+        playerData.vidas = numVidas;
+        vidasText.text = playerData.vidas.ToString();
+        //vidasText.text = numVidas.ToString();
+    }
+
+    public void GetPuntosVida(float puntosVida)
+    {
+        playerData.puntosVidas = puntosVida;
     }
 }

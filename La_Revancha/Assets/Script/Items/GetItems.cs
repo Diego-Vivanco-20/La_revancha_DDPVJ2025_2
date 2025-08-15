@@ -13,6 +13,7 @@ public class GetItems : MonoBehaviour
     public int numMonedas;
     public int recuerdos;
     public HUD hud;
+    //public PlayerDataSO playerData;
     //public HUD
     // Start is called before the first frame update
     void start()
@@ -30,6 +31,7 @@ public class GetItems : MonoBehaviour
         {
             Destroy(other.gameObject);
             puntosVida += 1;
+            //playerData.puntosSanacion += puntosVida;
             Debug.Log("Puntos de Vida: " + puntosVida);
             hud.SetNumPuntosVida(puntosVida);
         }
@@ -45,8 +47,8 @@ public class GetItems : MonoBehaviour
         {
             Destroy(other.gameObject);
             recuerdos += 1;
-            Debug.Log("Número de municiones: " + recuerdos);
-            hud.SetNumMonedas(recuerdos);
+            Debug.Log("Número de recuerdos: " + recuerdos);
+            hud.SetNumRecuerdos(recuerdos);
         }
     }
 }
