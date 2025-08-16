@@ -165,6 +165,7 @@ public class Enemigo : MonoBehaviour
         if (typeEnemy == 2)
         {
             animator.SetTrigger("machetazo");
+            SoundSFxMuerto.InstanceSFxMuerto.Machetear();
         }
         
         if (Vector3.Distance(transform.position, playerTransform.position) > 5f)

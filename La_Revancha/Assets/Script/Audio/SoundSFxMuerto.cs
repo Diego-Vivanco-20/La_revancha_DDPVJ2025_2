@@ -44,4 +44,9 @@ public class SoundSFxMuerto : MonoBehaviour
     {
         SFxMuertoSource.PlayOneShot(SFxClip[3]);
     }
+
+    public void Machetear()
+    {
+        SFxMuertoSource.PlayOneShot(SFxClip[4]);
+    }
 }
