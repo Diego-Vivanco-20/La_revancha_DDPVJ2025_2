@@ -18,19 +18,24 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetNumVidas(vidasProta);
         /*
         if(playerData.vidas == 3)
         {
             SetNumVidas(playerData.vidas);
         }*/
-        playerData.vidas = vidasProta;
-        SetNumVidas(playerData.vidas);
+        //playerData.vidas = vidasProta;
+        //SetNumVidas(playerData.vidas);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        SetNumVidas(playerData.vidas);
+        SetNumRecuerdos(playerData.recuerdos);
+        SetNumMonedas(playerData.monedas);
+        SetNumPuntosVida(playerData.puntosSanacion);
+       
     }
 
     public void SetNumMonedas(int monedas)
@@ -43,25 +48,25 @@ public class HUD : MonoBehaviour
 
     public void SetNumPuntosVida(int puntosVida)
     {
-        playerData.puntosSanacion = puntosVida;
-        puntosVidaText.text = playerData.puntosSanacion.ToString();
-        //puntosVidaText.text = puntosVida.ToString();
+        //playerData.puntosSanacion = puntosVida;
+        //puntosVidaText.text = playerData.puntosSanacion.ToString();
+        puntosVidaText.text = puntosVida.ToString();
     }
 
     public void SetNumRecuerdos(int numRecuerdos)
     {
-        playerData.recuerdos = numRecuerdos;
-        recuerdosText.text = playerData.recuerdos.ToString();
-        //recuerdosText.text = numRecuerdos.ToString();
+        //playerData.recuerdos = numRecuerdos;
+        //recuerdosText.text = playerData.recuerdos.ToString();
+        recuerdosText.text = numRecuerdos.ToString();
     }
 
 
     public void SetNumVidas(int numVidas)
     {
         //playerData.puntosVidas = numVidas;
-        playerData.vidas = numVidas;
-        vidasText.text = playerData.vidas.ToString();
-        //vidasText.text = numVidas.ToString();
+        //playerData.vidas = numVidas;
+        //vidasText.text = playerData.vidas.ToString();
+        vidasText.text = numVidas.ToString();
     }
 
     public void GetPuntosVida(float puntosVida)

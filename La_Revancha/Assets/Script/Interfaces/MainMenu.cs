@@ -7,22 +7,12 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public GameObject menu_Inicial;
-
-    
     public GameObject menu_Ajustes;
     public GameObject soundMenu;
     public GameObject imageMenu;
     public GameObject playMenu;
-
-    //public GameObject menu_Ajustes;
-    
-    //public GameObject menu_Creditos;
-    // Start is called before the first frame update
-    //public GameObject menu_Ajustes;
-
-    //public GameObject creditos2;
-
-    //public GameObject creditos3;
+    public GameObject credits;
+    public GameObject continueCredits;
 
     public Button playButton;
     public Button optionsButton;
@@ -30,8 +20,12 @@ public class MainMenu : MonoBehaviour
     public Button imageButton;
     public Button beginButton;
     public Button resumeButton;
+    public Button nextCredits;
+    public Button creditsMenu;
     public Button exitGame;
 
+
+    public Button backToMainMenuFromCredits;
     public Button backFromSoundButton;
     public Button backFromImageButton;
     public Button backToMainMenuFromSound;
@@ -61,7 +55,10 @@ public class MainMenu : MonoBehaviour
         optionsButton.onClick.AddListener(showOptions);
         soundButton.onClick.AddListener(showSoundMenu);
         imageButton.onClick.AddListener(showImageMenu);
+        creditsMenu.onClick.AddListener(ShowCredits);
+        nextCredits.onClick.AddListener(ShowNextCredits);
 
+        backToMainMenuFromCredits.onClick.AddListener(showMain);
         backFromSoundButton.onClick.AddListener(showOptions);
         backFromImageButton.onClick.AddListener(showOptions);
         backToMainMenuFromSound.onClick.AddListener(showMain);
@@ -80,22 +77,6 @@ public class MainMenu : MonoBehaviour
         showMain();
     }
 
-    public void showCredits()
-    {
-        CleanPanels();
-        //menu_Creditos.SetActive(true);
-    }
-
-    public void showCredits2()
-    {
-        CleanPanels();
-        //creditos2.SetActive(true);
-    }
-    public void showCredits3()
-    {
-        CleanPanels();
-        //creditos3.SetActive(true);
-    }
     public void showOptions()
     {
         CleanPanels();
@@ -110,13 +91,22 @@ public class MainMenu : MonoBehaviour
         playMenu.SetActive(true);
     }
 
+    public void ShowCredits()
+    {
+        CleanPanels();
+        credits.SetActive(true);
+    }
+
+    public void ShowNextCredits()
+    {
+        CleanPanels();
+        continueCredits.SetActive(true);
+    }
     public void showMain()
     {
         CleanPanels();
         menu_Inicial.SetActive(true);
         //SoundMusicManager.InstanceMusic.PlayMainMenu();
-
-
     }
 
 
@@ -134,22 +124,12 @@ public class MainMenu : MonoBehaviour
     private void CleanPanels()
     {
         menu_Inicial.SetActive(false);
-        
         menu_Ajustes.SetActive(false);
-
         soundMenu.SetActive(false);
-
         imageMenu.SetActive(false);
-
         playMenu.SetActive(false);
-
-
-
-    /*
-    menu_Creditos.SetActive(false);
-    creditos2.SetActive(false);
-    creditos3.SetActive(false);
-    */
+        credits.SetActive(false);
+        continueCredits.SetActive(false);
 }
     public void PlayGame()
     {

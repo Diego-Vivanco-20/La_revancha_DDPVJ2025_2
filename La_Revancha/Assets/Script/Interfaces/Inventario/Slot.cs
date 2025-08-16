@@ -13,6 +13,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public string descripcion;
     public bool vacio;
     public Sprite icono;
+    public int precio;
 
     public Transform slotIconogameObject;
 

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f0c74a151a51443a13cd4f185769a6, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  vidas: 0
+  vidas: 3
   recuerdos: 0
-  monedas: 1
-  puntosSanacion: 1
-  puntosVidas: 100
+  monedas: 0
+  puntosSanacion: 0
+  puntosVidas: 0
   puntosPoder: 0

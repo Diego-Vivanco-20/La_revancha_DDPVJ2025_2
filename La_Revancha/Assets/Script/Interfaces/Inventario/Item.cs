@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     public string type;
     public string descripcion;
     public Sprite icono;
+    public int precio;
 
     [HideInInspector]
     public bool pickedUp;
@@ -24,7 +25,7 @@ public class Item : MonoBehaviour
 
     public bool playerArma;
 
-
+    //public PlayerDataSO playerData;
 
     // Start is called before the first frame update
     private void Start()

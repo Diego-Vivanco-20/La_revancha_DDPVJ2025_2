@@ -19,6 +19,7 @@ public class SliderLife : MonoBehaviour
     void Start()
     {
         //vidaActual = vidaMax;
+        hud.SetNumVidas(vidas);
         playerData.puntosVidas = vidaMax;
     }
 
@@ -27,7 +28,7 @@ public class SliderLife : MonoBehaviour
     {
         RevisarVida();
         //caidaScript.checaVida();
-        hud.SetNumVidas(vidas);
+        //hud.SetNumVidas(vidas);
 
         if (Input.GetKeyDown(KeyCode.L))
         {

@@ -11,6 +11,8 @@ public class Inventario : MonoBehaviour
     private GameObject[] slot;
     public GameObject slotHolder;
 
+    public PlayerDataSO playerData;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +75,7 @@ public class Inventario : MonoBehaviour
 
     }
 
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Item")
@@ -84,6 +86,33 @@ public class Inventario : MonoBehaviour
         }
 
     }
+
+    */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Item")
+        {
+            GameObject itemPickedUp = other.gameObject;
+            Item item = itemPickedUp.GetComponent<Item>();
+            Debug.Log(item.type +":" +item.precio);
+            // Verificamos si el jugador tiene monedas suficientes
+            if (playerData.monedas >= item.precio)
+            {
+                playerData.monedas -= item.precio; // Restar el costo del ítem
+                AddItem(itemPickedUp, item.ID, item.type, item.descripcion, item.icono);
+                Debug.Log("Has recogido el ítem: " + item.type + " | Monedas restantes: " + playerData.monedas);
+            }
+            else
+            {
+                Debug.Log("No tienes suficientes monedas para recoger este ítem.");
+            }
+        }
+    }
+
+
+
+
 
     public void AddItem(GameObject itemObject, int itemID, string itemType, string itemDescripcion, Sprite itemIcono)
     {
