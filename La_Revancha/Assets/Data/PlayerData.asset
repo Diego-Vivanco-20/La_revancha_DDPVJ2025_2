@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   vidas: 3
-  recuerdos: 0
-  monedas: 0
-  puntosSanacion: 0
-  puntosVidas: 0
+  recuerdos: 6
+  monedas: 6
+  puntosSanacion: 15
+  puntosVidas: -2
   puntosPoder: 0
